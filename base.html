@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío 1 - JavaScript</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <section>
+        <div class="card">
+            <div class="img-card"></div>
+            <h6>Laptop Gamer AMD</h6>
+            <p>Precio base: $<span class="precio-inicial">400000</span> CLP</p>
+            <p>Cantidad:
+                <button class="btn-decrementar">-</button>
+                <span class="cantidad">1</span>
+                <button class="btn-incrementar">+</button>
+            </p>
+        </div>
+    </section>
+
+    <div class="total-section">
+        <p>Total a pagar: $<span class="valor-total">400000</span> CLP</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const precioBase = 400000;
+            let cantidad = 1;
+            const precioSpan = document.querySelector(".precio-inicial");
+            const cantidadSpan = document.querySelector(".cantidad");
+            const totalSpan = document.querySelector(".valor-total");
+
+            function actualizarTotal() {
+                cantidadSpan.textContent = cantidad;
+                totalSpan.textContent = precioBase * cantidad;
+            }
+
+            document.querySelector(".btn-incrementar").addEventListener("click", () => {
+                cantidad++;
+                actualizarTotal();
+            });
+
+            document.querySelector(".btn-decrementar").addEventListener("click", () => {
+                if (cantidad > 1) {
+                    cantidad--;
+                    actualizarTotal();
+                }
+            });
+
+            // Inicializar valores
+            actualizarTotal();
+        });
+    </script>
+</body>
+</html>
